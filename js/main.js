@@ -3,7 +3,6 @@ var Video = Backbone.Model.extend({});
 var VideoView = Backbone.View.extend({
     template: '#templateVideo',
     initialize: function() {
-        this.render();
         this.listenTo(this.model, "change", this.render);
     },
     render: function () {

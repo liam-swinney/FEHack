@@ -8,11 +8,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/materialize.css">
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
         <p>FE HACK</p>
-        <div id="videoList"></div>
+        <div id="videoList" class="card-panel teal lighten-2"></div>
 
         <script type="text/template" id="templateVideo">
         <p><%= name %></p>
@@ -22,6 +23,7 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
         <script src="node_modules/lodash/index.js"></script>
         <script src="node_modules/backbone/backbone-min.js"></script>
+        <script src="js/materialize.min.js"></script>
 
         <script src="js/main.js"></script>
 
