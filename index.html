@@ -16,7 +16,10 @@
         <div id="videoList" class="card-panel teal lighten-2"></div>
 
         <script type="text/template" id="templateVideo">
-        <p><%= name %></p>
+        <% _.each(items, function(item){ %>
+            <p><%= item.name %></p>
+            <p><%= item.url %></p>
+        <% }) %>
         </script>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
