@@ -1,51 +1,62 @@
 <!doctype html>
 <html class="no-js" lang="">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title></title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="css/normalize.min.css">
-        <link rel="stylesheet" href="css/materialize.css">
-        <link rel="stylesheet" href="css/main.css">
-    </head>
-    <body>
-        <p>FE HACK</p>
-        <div class="js-video-player-app"></div>
+		<link rel="stylesheet" href="css/normalize.min.css">
+		<link rel="stylesheet" href="css/materialize.css">
+		<link rel="stylesheet" href="css/main.css">
+	</head>
+	<body>
+		<p>FE HACK</p>
+		<div class="js-video-player-app"></div>
 
-        <script type="text/template" id="templateLayout">
-            <div class="js-video-list">
-                <ul id="videoList" class="card-panel teal lighten-2"></ul>
-            </div>
-            <div class="js-video-player"></div>
-            <div class="js-search"></div>
-        </script>
+		<script type="text/template" id="templateVideoSearch">
+			<form action="javascript:void(0);">
+				<input type="text" class="js-input" placeholder="Search Video"/>
+				<button type="button" class="js-submit-button">Submit</button>
+			</form>
+		</script>
 
-        <script type="text/template" id="templateVideo">
-            <a class="video" href="#" data-videoId="<%= id %>">
-                <img src="<%= snippet.thumbnails.default.url %>"></img>
-                <p><%= snippet.title %></p>
-                <p><%= snippet.description %></p>
-            </a>
-        </script>
+		<script type="text/template" id="templateLayout">
+			<div class="js-search"></div>
+			<div class="js-video-list">
+				<ul id="videoList" class="card-panel teal lighten-2"></ul>
+			</div>
+			<div class="js-video-player"></div>
+		</script>
 
-        <script type="text/template" id="templateVideoPlayer">
-            <% var videoUrl = "https://www.youtube.com/embed/" + id %>
+		<script type="text/template" id="templateVideo">
+			<a class="video" href="#" data-videoId="<%= id %>">
+				<img src="<%= snippet.thumbnails.default.url %>"></img>
+				<p><%= snippet.title %></p>
+				<p><%= snippet.description %></p>
+			</a>
+		</script>
 
-            <iframe width="854" height="510" src="<%= videoUrl %>" frameborder="0" allowfullscreen>
-            </iframe>
-        </script>
+		<script type="text/template" id="templateVideoPlayer">
+			<% var videoUrl = "https://www.youtube.com/embed/" + id %>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-        <script src="node_modules/lodash/index.js"></script>
-        <script src="node_modules/backbone/backbone-min.js"></script>
-        <script src="node_modules/backbone.marionette/lib/backbone.marionette.min.js"></script>
-        <script src="js/materialize.min.js"></script>
+			<iframe width="854" height="510" src="<%= videoUrl %>" frameborder="0" allowfullscreen>
+			</iframe>
+		</script>
 
-        <script src="js/main.js"></script>
+		<script type="text/template" id="templateVideoNoResults">
+			<p>NO RESULTS</p>
+		</script>
 
-    </body>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+		<script src="node_modules/lodash/index.js"></script>
+		<script src="node_modules/backbone/backbone-min.js"></script>
+		<script src="node_modules/backbone.marionette/lib/backbone.marionette.min.js"></script>
+		<script src="js/materialize.min.js"></script>
+
+		<script src="js/main.js"></script>
+
+	</body>
 </html>
