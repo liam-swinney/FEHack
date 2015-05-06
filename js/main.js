@@ -16,27 +16,20 @@ var VideoCollection = Backbone.Collection.extend({
     }
 });
 
-var VideoView = Mn.View.extend({
-    initialize : function(){
-        this.listenTo(this.collection, 'add', this.render);
-    },
+var VideoView = Mn.ItemView.extend({
     template: '#templateVideo',
-    render: function () {
-        var template = _.template($('#templateVideo').html());
-        var videoTemplate = template({
-            items: this.collection.toJSON()
-        });
+    model: Video,
+    tagName: 'li'
+});
 
-        this.$el.html(videoTemplate);
-
-        return this;
-    },
+var VideosView = Marionette.CollectionView.extend({
+    el: '#videoList',
+    childView: VideoView,
     collection: VideoCollection
 });
 
-
 var videoCollection = new VideoCollection; // creating new collection
-var videoView = new VideoView({collection : videoCollection}); // creating a view
-videoCollection.fetch();
+var videosView = new VideosView({collection : videoCollection}); // creating a view
 
-$('#videoList').html(videoView.el); // adding view to DOM
+videosView.render();
+videoCollection.fetch();

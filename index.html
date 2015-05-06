@@ -13,13 +13,19 @@
     </head>
     <body>
         <p>FE HACK</p>
-        <div id="videoList" class="card-panel teal lighten-2"></div>
+        <ul id="videoList" class="card-panel teal lighten-2"></ul>
 
         <script type="text/template" id="templateVideo">
-        <% _.each(items, function(item){ %>
-            <p><%= item.name %></p>
-            <p><%= item.url %></p>
-        <% }) %>
+            <a href="<%= snippet.url %>">
+                <img src="<%= snippet.thumbnails.default.url %>"></img>
+                <p><%= snippet.title %></p>
+                <p><%= snippet.description %></p>
+            </a>
+
+            <% var videoUrl = "https://www.youtube.com/embed/" + id %>
+
+            <iframe width="854" height="510" src="<%= videoUrl %>" frameborder="0" allowfullscreen>
+            </iframe>
         </script>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
