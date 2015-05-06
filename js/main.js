@@ -16,20 +16,51 @@ var VideoCollection = Backbone.Collection.extend({
     }
 });
 
+// Layout
+var Layout = Mn.LayoutView.extend({
+  template: '#templateLayout',
+    el: '.js-video-player-app',
+  // define regions
+  regions: {
+    videoList: '.js-video-list',
+    videoPlayer: '.js-video-player'
+  }
+});
+
+var layout = new Layout();
+
 var VideoView = Mn.ItemView.extend({
     template: '#templateVideo',
     model: Video,
     tagName: 'li'
 });
 
+var VideoPlayer = Mn.ItemView.extend({
+    template: '#templateVideoPlayer',
+    model: Video
+});
+
 var VideosView = Marionette.CollectionView.extend({
     el: '#videoList',
     childView: VideoView,
-    collection: VideoCollection
+    collection: VideoCollection,
+    events: {
+        'click .video': 'showVideo'
+    },
+    showVideo: function(e) {
+        e.preventDefault();
+        var id = $(e.currentTarget).data("videoid");
+
+        layout.videoPlayer.show(new VideoPlayer({
+            model: this.collection.get(id)
+        }));
+    }
 });
 
 var videoCollection = new VideoCollection; // creating new collection
-var videosView = new VideosView({collection : videoCollection}); // creating a view
-
-videosView.render();
 videoCollection.fetch();
+
+layout.render();
+
+// Show inner view
+layout.videoList.show(new VideosView({collection : videoCollection}));

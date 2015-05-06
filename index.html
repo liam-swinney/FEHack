@@ -13,15 +13,25 @@
     </head>
     <body>
         <p>FE HACK</p>
-        <ul id="videoList" class="card-panel teal lighten-2"></ul>
+        <div class="js-video-player-app"></div>
+
+        <script type="text/template" id="templateLayout">
+            <div class="js-video-list">
+                <ul id="videoList" class="card-panel teal lighten-2"></ul>
+            </div>
+            <div class="js-video-player"></div>
+            <div class="js-search"></div>
+        </script>
 
         <script type="text/template" id="templateVideo">
-            <a href="<%= snippet.url %>">
+            <a class="video" href="#" data-videoId="<%= id %>">
                 <img src="<%= snippet.thumbnails.default.url %>"></img>
                 <p><%= snippet.title %></p>
                 <p><%= snippet.description %></p>
             </a>
+        </script>
 
+        <script type="text/template" id="templateVideoPlayer">
             <% var videoUrl = "https://www.youtube.com/embed/" + id %>
 
             <iframe width="854" height="510" src="<%= videoUrl %>" frameborder="0" allowfullscreen>
