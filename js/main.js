@@ -21,17 +21,36 @@ var VideoView = Mn.ItemView.extend({
     template: '#templateVideo',
 });
 
+var VideoLayoutHeader = Mn.ItemView.extend({
+    template: '#templateHeader',
+});
+
 var CollectionView = Mn.CollectionView.extend({
     initialize : function(){
         this.listenTo(this.collection, 'add', this.render);
     },
-    //tagName: 'li',
-    el: '#videoList',
+    tagName: 'ul',
+    className:  'video-list',
     childView : VideoView,
     collection: VideoCollection
 });
 
+var VideoLayoutView = Mn.LayoutView.extend({
+    template: '#templateVideo2',
+
+    regions: {
+        headerRegion: '#header-region',
+        videoListRegion: '#video-list-region',
+        videoPlayRegion: '#video-play-region'
+    },
+
+    el: '#videoList2'
+});
+
 var videoCollection = new VideoCollection; // creating new collection
-var collectionView = new CollectionView({collection : videoCollection}); // creating a view
+var videoLayoutView = new VideoLayoutView({});
 
 videoCollection.fetch();
+videoLayoutView.render();
+videoLayoutView.videoListRegion.show(new CollectionView({collection : videoCollection}));
+videoLayoutView.headerRegion.show(new VideoLayoutHeader());
