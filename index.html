@@ -17,8 +17,9 @@
 
         <script type="text/template" id="templateVideo">
         <% _.each(items, function(item){ %>
-            <p><%= item.name %></p>
-            <p><%= item.url %></p>
+            <a href="#"><p><%= item.snippet.title %></p></a>
+            <a href="#"><img src="<%= item.snippet.thumbnails.default.url %>"></a>
+            <p><%= item.snippet.description %></p>
         <% }) %>
         </script>
 

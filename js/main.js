@@ -16,21 +16,12 @@ var VideoCollection = Backbone.Collection.extend({
     }
 });
 
-var VideoView = Mn.View.extend({
+var VideoView = Mn.ItemView.extend({
     initialize : function(){
         this.listenTo(this.collection, 'add', this.render);
     },
     template: '#templateVideo',
-    render: function () {
-        var template = _.template($('#templateVideo').html());
-        var videoTemplate = template({
-            items: this.collection.toJSON()
-        });
 
-        this.$el.html(videoTemplate);
-
-        return this;
-    },
     collection: VideoCollection
 });
 
