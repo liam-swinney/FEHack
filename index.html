@@ -13,14 +13,12 @@
     </head>
     <body>
         <p>FE HACK</p>
-        <div id="videoList" class="card-panel teal lighten-2"></div>
+        <ul id="videoList" class="card-panel teal lighten-2"></ul>
 
         <script type="text/template" id="templateVideo">
-        <% _.each(items, function(item){ %>
-            <a href="#"><p><%= item.snippet.title %></p></a>
-            <a href="#"><img src="<%= item.snippet.thumbnails.default.url %>"></a>
-            <p><%= item.snippet.description %></p>
-        <% }) %>
+            <a href="#"><p><%= snippet.title %></p></a>
+            <a href="#"><img src="<%= snippet.thumbnails.default.url %>"></a>
+            <p><%= snippet.description %></p>
         </script>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

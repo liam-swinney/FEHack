@@ -17,17 +17,21 @@ var VideoCollection = Backbone.Collection.extend({
 });
 
 var VideoView = Mn.ItemView.extend({
+    tagName: 'li',
+    template: '#templateVideo',
+});
+
+var CollectionView = Mn.CollectionView.extend({
     initialize : function(){
         this.listenTo(this.collection, 'add', this.render);
     },
-    template: '#templateVideo',
-
+    //tagName: 'li',
+    el: '#videoList',
+    childView : VideoView,
     collection: VideoCollection
 });
 
-
 var videoCollection = new VideoCollection; // creating new collection
-var videoView = new VideoView({collection : videoCollection}); // creating a view
-videoCollection.fetch();
+var collectionView = new CollectionView({collection : videoCollection}); // creating a view
 
-$('#videoList').html(videoView.el); // adding view to DOM
+videoCollection.fetch();
